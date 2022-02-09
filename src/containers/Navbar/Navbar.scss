@@ -1,0 +1,22 @@
+
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #3D3B3C;
+  text-align: center;
+  color:#F3F7F4;
+
+  &__punk {
+    color: #2176FF;
+  }
+
+  &__search {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 80%;
+  }
+}

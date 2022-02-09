@@ -1,0 +1,8 @@
+
+.cardlist {
+  width: 70vw;
+  display: grid;
+  overflow-x: hidden;
+  grid-template-columns: repeat(3,1fr);
+  margin-left: 25vw;
+}

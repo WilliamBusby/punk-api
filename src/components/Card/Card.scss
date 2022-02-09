@@ -1,0 +1,49 @@
+
+.card {
+  width: 20vw;
+  background-color: #7C8682;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #F3F7F4;
+  border-radius: 20px;
+  display: grid;
+  grid-template-areas:
+  "beerName abv"
+  "beerImage tagline"
+  "beerImage ph"
+  "beerImage firstBrewed";
+  padding-bottom: 10px;
+
+  &__image {
+    height: 20vh;
+    width: auto;
+    margin: 0 auto;
+    grid-area: beerImage;
+  }
+
+  h3 {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  &__name {
+    grid-area: beerName;
+  }
+
+  &__abv {
+    grid-area: abv;
+  }
+
+  &__ph {
+    grid-area: ph;
+  }
+
+  &__first-brewed {
+    grid-area: firstBrewed;
+  }
+
+  &__tag-line {
+    grid-area: tagline;
+  }
+}
