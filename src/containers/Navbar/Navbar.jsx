@@ -14,7 +14,8 @@ const Navbar = (props) => {
       <div className="navbar__search">
         <SearchBox changeSearchParams={changeSearchParams}/>
         <FilterItem name="nav__ABV" min="0" max="12" step="0.5" changeSearchParams={changeSearchParams}/>
-        <FilterItem name="nav__date" min="0" max="12" step="1" changeSearchParams={changeSearchParams}/>
+        <FilterItem name="nav__date" min="2008" max="2023" step="1" changeSearchParams={changeSearchParams}/>
+        <FilterItem name="nav__ph" min="0" max="6" step="0.2" changeSearchParams={changeSearchParams}/>
       </div>
     </div>
   )

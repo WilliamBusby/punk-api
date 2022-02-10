@@ -5,15 +5,12 @@ const FilterItem = (props) => {
   const {name, changeSearchParams, min, max, step} = props;
 
   return (
-    <div className="checkbox">
+    <div className="nav__range">
       {/* <label htmlFor={name}>{name}</label> */}
-      <input type="range" min={min} max={max} step={step} name={name} onInput={changeSearchParams} id={name} list="tickmarks"/>
-      <datalist id="tickmarks">
-        <option value={min} label={min}></option>
-        <option value={(max-min)/4}></option>
-        <option value={(max-min)/2} label={(max-min)/2}></option>
-        <option value={3*(max-min)/4}></option>
-        <option value={max} label={max}></option>
+      <input type="range" min={min} max={max} step={step} name={name} onInput={changeSearchParams} id={name} list={`tickmarks-${name}`}/>
+      <datalist id={`tickmarks-${name}`}>
+        <option value={min} label={min}>{min}</option>
+        <option value={max} label={max}>{max}</option>
       </datalist>
     </div>
   )

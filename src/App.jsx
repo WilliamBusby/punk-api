@@ -7,16 +7,17 @@ const App = () => {
 
   const defaultUrl = "https://api.punkapi.com/v2/beers?";
 
-  const searchParams = {
+  const initialSearchParams = {
     beer_name: "",
     ph: 0,
     abv_gt: 0,
-    brewed_before: `${new Date().getMonth()}-${new Date().getFullYear()}`
+    brewed_before: `01-${new Date().getFullYear()+1}`
   }
 
   const [beers, setBeers] = useState([]);
   const [apiUrl, setApiUrl] = useState(defaultUrl);
-
+  const [searchParams, setSearchParams] = useState(initialSearchParams);
+  
   const getBeersList = (url) => {
     return fetch(url)
       .then(response => response.json())
@@ -28,22 +29,32 @@ const App = () => {
   },[apiUrl]);
 
   const changeSearchParams = (event) => {
-    if(event.target.id === "search-box" && event.target.value.length > 0) {
-      searchParams.beer_name = event.target.value.replace(" ", "_").toLowerCase();
-      updateUrl("beer_name", searchParams.beer_name);
+    const startingParams = searchParams;
+    if(event.target.id === "search-box") {
+      startingParams.beer_name = event.target.value.replace(" ", "_").toLowerCase();
     } else if(event.target.id === "nav__ABV") {
-      searchParams.abv_gt = event.target.value;
-      updateUrl("abv_gt", searchParams.abv_gt);
+      startingParams.abv_gt = event.target.value;
     } else if(event.target.id === "nav__date") {
-      searchParams.brewed_before = event.target.value;
-      updateUrl("brewed_before", searchParams.brewed_before);
+      startingParams.brewed_before = `01-${event.target.value}`;
+    } else if(event.target.id === "nav__ph") {
+      startingParams.ph = event.target.value;
     }
+    setSearchParams(startingParams);
+    updateUrl();
+    getBeersList(apiUrl);
+    changeForPh();
   }
 
-  const updateUrl = (inputName, inputObjectValue) => {
-    let addedSearchParams = "";
-    if(inputObjectValue) addedSearchParams += `${inputName}=${inputObjectValue}&`;
-    setApiUrl(defaultUrl + addedSearchParams);
+  const changeForPh = () => {
+    const filteredBeerList = beers.filter(beer => {return(beer.ph && (Number(beer.ph) < searchParams.ph))});
+    setBeers(filteredBeerList);
+  }
+
+  const updateUrl = () => {
+    let currentUrl = defaultUrl;
+    if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}&`; 
+    currentUrl += `abv_gt=${searchParams.abv_gt}&` + `brewed_before=${searchParams.brewed_before}&`;
+    setApiUrl(currentUrl);
   }
 
   return (
