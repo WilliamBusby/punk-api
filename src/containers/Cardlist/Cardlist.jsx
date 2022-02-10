@@ -8,7 +8,7 @@ const Cardlist = () => {
   const [beers, setBeers] = useState([]);
 
   const getBeersList = () => {
-    return fetch("https://api.punkapi.com/v2/beers?page=1&per_page=9")
+    return fetch("https://api.punkapi.com/v2/beers")
       .then(response => response.json())
       .then(data => setBeers(data));
   }

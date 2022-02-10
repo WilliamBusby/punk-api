@@ -30,6 +30,7 @@ const Card = (props) => {
       <p className="card__tag-line">{beerTagline}</p>
       <p className="card__ph">{beerPh} pH</p>
       <p className="card__first-brewed">{beerFirstBrew}</p>
+      {/* <p className="card__desc">{beerDesc}</p> */}
     </div>
   )
 }
