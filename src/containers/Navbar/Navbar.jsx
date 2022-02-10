@@ -1,17 +1,20 @@
 
 import React from 'react';
+import FilterItem from '../../components/FilterItem/FilterItem';
+import SearchBox from '../../components/SearchBox/SearchBox';
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  const {changeSearchParams} = props;
+
   return (
     <div className="navbar">
       <h1><span className="navbar__punk">PUNK</span> API</h1>
       <div className="navbar__search">
-        <label htmlFor="searchBar">Search</label>
-        <input type="text" name="searchBar" id="searchBar"/>
-
-        <label htmlFor="ph">pH</label>
-        <input type="checkbox" name="ph"/>
+        <SearchBox changeSearchParams={changeSearchParams}/>
+        <FilterItem name="nav__ABV" min="0" max="12" step="0.5" changeSearchParams={changeSearchParams}/>
+        <FilterItem name="nav__date" min="0" max="12" step="1" changeSearchParams={changeSearchParams}/>
       </div>
     </div>
   )
