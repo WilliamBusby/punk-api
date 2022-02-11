@@ -29,8 +29,9 @@
   &__range {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     width: 100%;
+    margin-bottom: 20px;
   }
 
   #search-box {
@@ -40,12 +41,13 @@
   &__change-search {
     background-color: #F3F7F4;
     border-radius: 2px;
+    padding: 5px;
   }
 
   &__change-page {
     width: 50%;
     margin-left: 25%;
-    margin-top: 3vw;
+    margin-top: 1vw;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
