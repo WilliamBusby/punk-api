@@ -27,7 +27,6 @@ const App = () => {
 
   useEffect(() => {
     getBeersList(apiUrl);
-    console.log(searchParams)
   },[apiUrl]);
 
   const changeSearchParams = (event) => {
