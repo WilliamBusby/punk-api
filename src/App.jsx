@@ -5,25 +5,25 @@ import Main from "./containers/Main/Main";
 
 const App = () => {
 
-  const defaultUrl = "https://api.punkapi.com/v2/beers?";
+  const defaultUrl = "https://api.punkapi.com/v2/beers?per_page=80&";
 
   const initialSearchParams = {
     beer_name: "",
-    ph: 0,
     abv_gt: 0,
-    brewed_before: `01-${new Date().getFullYear()+1}`,
+    brewed_before: `01-${Number(new Date().getFullYear())+1}`,
     page: 1
   }
 
   const [beers, setBeers] = useState([]);
   const [apiUrl, setApiUrl] = useState(defaultUrl);
   const [searchParams, setSearchParams] = useState(initialSearchParams);
+  const [usePh, setUsePh] = useState(false);
   
   const getBeersList = (url) => {
     return fetch(url)
       .then(response => response.json())
       .then(data => setBeers(data));
-  }
+  };
 
   useEffect(() => {
     getBeersList(apiUrl);
@@ -37,8 +37,6 @@ const App = () => {
       startingParams.abv_gt = event.target.value;
     } else if(event.target.id === "nav__Date") {
       startingParams.brewed_before = `01-${event.target.value}`;
-    } else if(event.target.id === "nav__pH") {
-      startingParams.ph = event.target.value;  
     } else if(event.target.id === "nav__page-plus") {
       startingParams.page++;
     } else if(event.target.id === "nav__page-minus" && startingParams.page > 1) {
@@ -46,25 +44,22 @@ const App = () => {
     }
     setSearchParams(startingParams);
     updateUrl();
-    changeForPh();
   }
 
-  const changeForPh = () => {
-    const filteredBeerList = beers.filter(beer => {return(beer.ph && (Number(beer.ph) < searchParams.ph))});
-    setBeers(filteredBeerList);
+  const handleUsePh = () => {
+    setUsePh(!usePh);
   }
 
   const updateUrl = () => {
-    let currentUrl = defaultUrl + `page=${searchParams.page}&`;
-    if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}&`; 
-    currentUrl += `abv_gt=${searchParams.abv_gt}&brewed_before=${searchParams.brewed_before}`;
+    let currentUrl = defaultUrl + `page=${searchParams.page}&abv_gt=${searchParams.abv_gt}&brewed_before=${searchParams.brewed_before}&`;
+    if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}`; 
     setApiUrl(currentUrl);
   }
 
   return (
     <div className="App">
-      <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams}/>
-      <Main beers={beers}/>
+      <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handleUsePh={handleUsePh} usePh={usePh}/>
+      <Main beers={beers} usePh={usePh}/>
     </div>
   );
 }
