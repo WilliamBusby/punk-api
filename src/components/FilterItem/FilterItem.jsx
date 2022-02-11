@@ -4,14 +4,12 @@ const FilterItem = (props) => {
 
   const {name, changeSearchParams, min, max, step, value, label} = props;
 
+  const currentValue = Number(String(value).replace("01-", ""));
+
   return (
     <div className="nav__range">
       <label htmlFor={name}>{label} {value}</label>
-      <input type="range" min={min} max={max} step={step} name={name} onInput={changeSearchParams} id={name} list={`tickmarks-${name}`}/>
-      <datalist id={`tickmarks-${name}`}>
-        <option value={min} label={min}>{min}</option>
-        <option value={max} label={max}>{max}</option>
-      </datalist>
+      <input type="range" min={min} max={max} step={step} name={name} value={currentValue} onInput={changeSearchParams} id={name}/>
     </div>
   )
 }

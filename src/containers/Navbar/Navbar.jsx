@@ -24,7 +24,7 @@ const Navbar = (props) => {
           <label htmlFor="nav__ph">{phLabel}</label>
           <input type="checkbox" checked={usePh} onChange={handleUsePh} id="nav__ph" name="nav__ph"/>
         </div>
-        <p>Make sure to check all pages for search results.</p>
+        <p>Make sure to check all pages for pH results.</p>
         <div className="nav__change-page">
           <ChangePageButton id="nav__page-plus" img={rightArrow} changeSearchParams={changeSearchParams} />
           <p className="nav__text">{currentSearchParams.page}</p>
