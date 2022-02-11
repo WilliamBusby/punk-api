@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# punk-api
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a project used as an introduction to React coding and calling external APIs with Fetch.
 
-In the project directory, you can run:
+Requirements:
+- Must be built using React.
+- Must use the Punk API (https://punkapi.com/).
+- Test where possible.
+- Repository on Github.
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a website that shows a list of Brewdog beers taken from the Punk API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+There are several input options to filter beers by:
 
-### `npm test`
+- Search by name.
+- ABV.
+- Brewed before date.
+- pH.
+- Different pages with 25 results on each page.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Files
 
-### `npm run build`
+As this was made using React, there are both public and src files.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Public: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Index.html.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Src:
 
-### `npm run eject`
+- App.jsx for the main logic.
+- App.scss for the styling of the app.
+- Assets folder containing images used for README and website.
+- Components folder with each component folder, each containing a respective jsx and scss file.
+- Containers folder with each container folder, each containing a respective jsx and scss file.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Current known issues
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- There is an issue with attempting to go back a page when on the first page showing no beers.
+- There is an issue with filtering only working in one direction.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contact me
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If there are any issues with the website please contact me at williambusby1999@gmail.com. Please include the title of this respository in the subject.
 
-## Learn More
+## Screenshots
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Desktop View]()
