@@ -1,6 +1,7 @@
 
 .card {
   width: 20vw;
+  height: 20vw;
   background-color: #7C8682;
   text-align: center;
   margin-bottom: 10px;
@@ -14,7 +15,7 @@
   "beerImage ph"
   "beerImage firstBrewed";
   padding-bottom: 10px;
-  box-shadow: 5px 5px 5px #000000;
+  box-shadow: 5px 5px 5px #bed0db;
   overflow: hidden;
 
   &__image {
@@ -47,5 +48,17 @@
 
   &__tag-line {
     grid-area: tagline;
+  }
+
+  &-desc {
+    display: flex;
+    flex-direction: column;
+    
+
+    &__text {
+      margin-left: 10%;
+      width: 80%;
+      font-size: 0.8vw;
+    }
   }
 }

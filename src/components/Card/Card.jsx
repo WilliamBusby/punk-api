@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import "./Card.scss";
 
 const Card = (props) => {
 
   const {beerInfo} = props;
+
+  const [isDescShowing, setIsDescShowing] = useState(false);
 
   const beerName = beerInfo.name;
   const beerAbv = beerInfo.abv;
@@ -22,16 +24,26 @@ const Card = (props) => {
     beerDesc += "."
   };
 
+  const handleIsDescShowing = () => {
+    setIsDescShowing(!isDescShowing);
+  }
+
   return (
-    <div className="card">
-      <h3 className="card__name">{beerName}</h3>
-      <h4 className="card__abv">{beerAbv} ABV</h4>
-      <img src={beerImage} alt="" className="card__image"/>
-      <p className="card__tag-line">{beerTagline}</p>
-      <p className="card__ph">{beerPh} pH</p>
-      <p className="card__first-brewed">{beerFirstBrew}</p>
-      {/* <p className="card__desc">{beerDesc}</p> */}
+    <div className="full-card">
+      { !isDescShowing &&  <div className="card" onClick={handleIsDescShowing}>
+        <h3 className="card__name">{beerName}</h3>
+        <h4 className="card__abv">{beerAbv} ABV</h4>
+        <img src={beerImage} alt="" className="card__image"/>
+        <p className="card__tag-line">{beerTagline}</p>
+        <p className="card__ph">{beerPh} pH</p>
+        <p className="card__first-brewed">{beerFirstBrew}</p>
+      </div>}
+      {isDescShowing && <div className="card card-desc" onClick={handleIsDescShowing}>
+        <h3 className="card__name">{beerName}</h3>
+        <p className="card-desc__text">{beerDesc}</p>
+      </div>}
     </div>
+
   )
 }
 

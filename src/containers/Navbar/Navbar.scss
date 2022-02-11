@@ -1,5 +1,5 @@
 
-.navbar {
+.nav {
   position: fixed;
   left: 0;
   top: 0;
@@ -9,19 +9,45 @@
   background-color: #3D3B3C;
   text-align: center;
   color:#F3F7F4;
-  box-shadow: 10px 0 5px #888888;
+  box-shadow: 10px 0 5px #bed0db;
 
   h1 {
     font-size: 3vw;
   }
 
   &__punk {
-    color: #2176FF;
+    color: #6ab4cb;
   }
 
   &__search {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 1fr;
     width: 80%;
+    margin-left: 10%;
+  }
+
+  &__range {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+  }
+
+  #search-box {
+    margin-bottom: 20px;
+  }
+
+  &__change-search {
+    background-color: #F3F7F4;
+    border-radius: 2px;
+  }
+
+  &__change-page {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 3vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
   }
 }

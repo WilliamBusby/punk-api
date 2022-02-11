@@ -2,10 +2,12 @@
 import React from 'react';
 import Cardlist from "./../Cardlist/Cardlist";
 
-const Main = () => {
+const Main = (props) => {
+
+  const {beers} = props;
   return (
     <div className="main">
-      <Cardlist />
+      <Cardlist beers={beers}/>
     </div>
   )
 }
