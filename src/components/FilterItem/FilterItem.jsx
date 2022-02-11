@@ -6,7 +6,7 @@ const FilterItem = (props) => {
 
   return (
     <div className="nav__range">
-      {/* <label htmlFor={name}>{name}</label> */}
+      <label htmlFor={name}>{name.replace("nav__", "")}</label>
       <input type="range" min={min} max={max} step={step} name={name} onInput={changeSearchParams} id={name} list={`tickmarks-${name}`}/>
       <datalist id={`tickmarks-${name}`}>
         <option value={min} label={min}>{min}</option>

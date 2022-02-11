@@ -11,7 +11,8 @@ const App = () => {
     beer_name: "",
     ph: 0,
     abv_gt: 0,
-    brewed_before: `01-${new Date().getFullYear()+1}`
+    brewed_before: `01-${new Date().getFullYear()+1}`,
+    page: 1
   }
 
   const [beers, setBeers] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
 
   useEffect(() => {
     getBeersList(apiUrl);
+    console.log(searchParams)
   },[apiUrl]);
 
   const changeSearchParams = (event) => {
@@ -34,14 +36,17 @@ const App = () => {
       startingParams.beer_name = event.target.value.replace(" ", "_").toLowerCase();
     } else if(event.target.id === "nav__ABV") {
       startingParams.abv_gt = event.target.value;
-    } else if(event.target.id === "nav__date") {
+    } else if(event.target.id === "nav__Date") {
       startingParams.brewed_before = `01-${event.target.value}`;
-    } else if(event.target.id === "nav__ph") {
-      startingParams.ph = event.target.value;
+    } else if(event.target.id === "nav__pH") {
+      startingParams.ph = event.target.value;  
+    } else if(event.target.id === "nav__page-plus") {
+      startingParams.page++;
+    } else if(event.target.id === "nav__page-minus" && startingParams.page > 1) {
+      startingParams.page--;
     }
     setSearchParams(startingParams);
     updateUrl();
-    getBeersList(apiUrl);
     changeForPh();
   }
 
@@ -51,15 +56,15 @@ const App = () => {
   }
 
   const updateUrl = () => {
-    let currentUrl = defaultUrl;
+    let currentUrl = defaultUrl + `page=${searchParams.page}&`;
     if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}&`; 
-    currentUrl += `abv_gt=${searchParams.abv_gt}&` + `brewed_before=${searchParams.brewed_before}&`;
+    currentUrl += `abv_gt=${searchParams.abv_gt}&brewed_before=${searchParams.brewed_before}`;
     setApiUrl(currentUrl);
   }
 
   return (
     <div className="App">
-      <Navbar changeSearchParams={changeSearchParams}/>
+      <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams}/>
       <Main beers={beers}/>
     </div>
   );
