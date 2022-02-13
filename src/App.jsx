@@ -37,7 +37,7 @@ const App = () => {
       startingParams.abv_gt = event.target.value;
     } else if(event.target.id === "nav__Date") {
       startingParams.brewed_before = `01-${event.target.value}`;
-    } else if(event.target.id === "nav__page-plus" && startingParams.page < 3) {
+    } else if(event.target.id === "nav__page-plus" && startingParams.page < 6) {
       startingParams.page++;
     } else if(event.target.id === "nav__page-minus" && startingParams.page > 1) {
       startingParams.page--;
