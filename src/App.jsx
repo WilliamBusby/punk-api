@@ -18,16 +18,22 @@ const App = () => {
   const [apiUrl, setApiUrl] = useState(defaultUrl);
   const [searchParams, setSearchParams] = useState(initialSearchParams);
   const [usePh, setUsePh] = useState(false);
+  const [fullBeerList, setFullBeerList] = useState([]);
   
-  const getBeersList = (url) => {
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => setBeers(data));
+  const getBeersList = async () => {
+    const beerList = [];
+    for(let i = 1; i<6; i++) {
+      const response = await fetch(`https://api.punkapi.com/v2/beers?per_page=80&page=${i}`);
+      const data = await response.json();
+      beerList.push(data);
+    }
+    const flattenedArr = beerList.flat();
+    setBeers(flattenedArr);
   };
 
   useEffect(() => {
-    getBeersList(apiUrl);
-  },[apiUrl]);
+    getBeersList();
+  },[]);
 
   const changeSearchParams = (event) => {
     const startingParams = searchParams;
@@ -44,6 +50,7 @@ const App = () => {
     }
     setSearchParams(startingParams);
     updateUrl();
+    filterBeers();
   }
 
   const handleUsePh = () => {
@@ -54,6 +61,13 @@ const App = () => {
     let currentUrl = defaultUrl + `page=${searchParams.page}&abv_gt=${searchParams.abv_gt}&brewed_before=${searchParams.brewed_before}&`;
     if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}`; 
     setApiUrl(currentUrl);
+  }
+
+  const filterBeers = () => {
+    const fullList = [...beers];
+    const abvFilteredBeers = fullList.filter(beer => beer.abv > searchParams.abv_gt);
+    const brewedBeforeBeers = abvFilteredBeers.filter(beer => new Date(beer.brewed_before).getTime() > new Date(searchParams.brewed_before).getTime());
+    console.log(brewedBeforeBeers);
   }
 
   return (
