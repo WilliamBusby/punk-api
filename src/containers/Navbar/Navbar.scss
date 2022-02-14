@@ -39,13 +39,14 @@
   }
 
   &__change-page {
+    margin-top: 1vw;
     width: 20vw;
     margin-left: -3vw;
 
     &__selected {
       background-color: #6ab4cb;
       border: none;
-      border-radius: 2px;
+      border-radius: 5px;
       width: 8%;
     }
   }

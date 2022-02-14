@@ -17,8 +17,25 @@ const Navbar = (props) => {
       <div className="nav__search">
         <SearchBox changeSearchParams={changeSearchParams}/>
         <div className="nav__filters">
-          <RangeSlider name="nav__ABV" min="0" max="12" step="0.5" changeSearchParams={changeSearchParams} value={currentSearchParams.abv_gt} label="ABV % > "/>
-          <RangeSlider name="nav__Date" min="2008" max="2023" step="1" changeSearchParams={changeSearchParams} value={currentSearchParams.brewed_before} label="Brewed before" />
+          <RangeSlider 
+          name="nav__ABV" 
+          min="0" max="12" 
+          step="0.5" 
+          changeSearchParams={changeSearchParams} 
+          value={currentSearchParams.abv_gt} 
+          label="ABV % > " 
+          />
+
+          <RangeSlider 
+          name="nav__Date" 
+          min="2008" 
+          max="2023" 
+          step="1" 
+          changeSearchParams={changeSearchParams} 
+          value={currentSearchParams.brewed_before} 
+          label="Brewed before" 
+          />
+          
           <label htmlFor="nav__ph">{phLabel}</label>
           <input type="checkbox" checked={currentSearchParams.usePh} onChange={changeSearchParams} id="nav__ph" name="nav__ph"/>
         </div>

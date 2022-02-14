@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.scss';
 import Navbar from "./containers/Navbar/Navbar";
 import Main from "./containers/Main/Main";
+import BeerPage from './components/BeerPage/BeerPage';
 
 const App = () => {
 
@@ -72,10 +73,23 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
-      <Main beers={displayedBeers}/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route 
+          path="/"
+          element = {<><Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
+          <Main beers={displayedBeers}/></>}> 
+          </Route>
+          <Route 
+          path="/:beerId"
+          element= {<BeerPage beers={beers} />}>
+          </Route>
+        </Routes>
+        
+      </div>
+    </Router>
+
   );
 }
 
