@@ -5,20 +5,17 @@ import Main from "./containers/Main/Main";
 
 const App = () => {
 
-  const defaultUrl = "https://api.punkapi.com/v2/beers?per_page=80&";
-
   const initialSearchParams = {
     beer_name: "",
     abv_gt: 0,
-    brewed_before: `01-${Number(new Date().getFullYear())+1}`,
+    brewed_before: `${Number(new Date().getFullYear())+1}`,
     page: 1
   }
 
   const [beers, setBeers] = useState([]);
-  const [apiUrl, setApiUrl] = useState(defaultUrl);
   const [searchParams, setSearchParams] = useState(initialSearchParams);
   const [usePh, setUsePh] = useState(false);
-  const [fullBeerList, setFullBeerList] = useState([]);
+  const [filteredBeerList, setFilteredBeerList] = useState([]);
   
   const getBeersList = async () => {
     const beerList = [];
@@ -29,6 +26,7 @@ const App = () => {
     }
     const flattenedArr = beerList.flat();
     setBeers(flattenedArr);
+    setFilteredBeerList(flattenedArr);
   };
 
   useEffect(() => {
@@ -38,18 +36,17 @@ const App = () => {
   const changeSearchParams = (event) => {
     const startingParams = searchParams;
     if(event.target.id === "search-box") {
-      startingParams.beer_name = event.target.value.replace(" ", "_").toLowerCase();
+      startingParams.beer_name = event.target.value.toLowerCase();
     } else if(event.target.id === "nav__ABV") {
       startingParams.abv_gt = event.target.value;
     } else if(event.target.id === "nav__Date") {
-      startingParams.brewed_before = `01-${event.target.value}`;
+      startingParams.brewed_before = event.target.value;
     } else if(event.target.id === "nav__page-plus" && startingParams.page < 6) {
       startingParams.page++;
     } else if(event.target.id === "nav__page-minus" && startingParams.page > 1) {
       startingParams.page--;
     }
     setSearchParams(startingParams);
-    updateUrl();
     filterBeers();
   }
 
@@ -57,23 +54,18 @@ const App = () => {
     setUsePh(!usePh);
   }
 
-  const updateUrl = () => {
-    let currentUrl = defaultUrl + `page=${searchParams.page}&abv_gt=${searchParams.abv_gt}&brewed_before=${searchParams.brewed_before}&`;
-    if(searchParams.beer_name) currentUrl += `beer_name=${searchParams.beer_name}`; 
-    setApiUrl(currentUrl);
-  }
-
   const filterBeers = () => {
-    const fullList = [...beers];
-    const abvFilteredBeers = fullList.filter(beer => beer.abv > searchParams.abv_gt);
-    const brewedBeforeBeers = abvFilteredBeers.filter(beer => new Date(beer.brewed_before).getTime() > new Date(searchParams.brewed_before).getTime());
-    console.log(brewedBeforeBeers);
+    const textFiltered = beers.filter(beer => beer.name.toLowerCase().includes(searchParams.beer_name));
+    const abvFilteredBeers = textFiltered.filter(beer => beer.abv > searchParams.abv_gt);
+    const brewedBeforeBeers = abvFilteredBeers.filter(beer => beer.first_brewed.slice(-4) < searchParams.brewed_before);
+    const phBeers = (usePh) ? brewedBeforeBeers.filter(beer => (beer.ph < 4 && beer.ph)) : brewedBeforeBeers;
+    setFilteredBeerList(phBeers);
   }
 
   return (
     <div className="App">
       <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handleUsePh={handleUsePh} usePh={usePh}/>
-      <Main beers={beers} usePh={usePh}/>
+      <Main beers={filteredBeerList} usePh={usePh}/>
     </div>
   );
 }
