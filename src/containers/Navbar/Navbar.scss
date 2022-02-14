@@ -45,11 +45,22 @@
   }
 
   &__change-page {
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 1vw;
+    width: 20vw;
+    margin-left: -3vw;
+
+    &__selected {
+      color: red;
+    }
+  //   margin-top: 1vw;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   flex-direction: row;
+  }
+
+  ul {
+    list-style-type: none;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    flex-direction: row-reverse;
   }
 }

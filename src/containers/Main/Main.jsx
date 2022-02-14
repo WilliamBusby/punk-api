@@ -4,10 +4,11 @@ import Cardlist from "./../Cardlist/Cardlist";
 
 const Main = (props) => {
 
-  const {beers, usePh} = props;
+  const {beers} = props;
+  
   return (
     <div className="main">
-      <Cardlist beers={beers} usePh={usePh}/>
+      <Cardlist beers={beers}/>
     </div>
   )
 }
