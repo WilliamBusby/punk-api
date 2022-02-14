@@ -54,13 +54,11 @@ const App = () => {
       startingParams.abv_gt = event.target.value;
     } else if(event.target.id === "nav__Date") {
       startingParams.brewed_before = event.target.value;
-    } else if(event.target.id === "nav__page-plus" && startingParams.page < 6) {
-      startingParams.page++;
-    } else if(event.target.id === "nav__page-minus" && startingParams.page > 1) {
-      startingParams.page--;
     } else if(event.target.id === "nav__ph") {
       startingParams.usePh = !startingParams.usePh;
     }
+    setCurrentPage(1);
+    setPageStart(0);
     setSearchParams(startingParams);
     filterBeers();
   }

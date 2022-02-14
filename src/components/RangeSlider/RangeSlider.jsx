@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FilterItem = (props) => {
+const RangeSlider = (props) => {
 
   const {name, changeSearchParams, min, max, step, value, label} = props;
 
@@ -12,4 +12,4 @@ const FilterItem = (props) => {
   )
 }
 
-export default FilterItem
+export default RangeSlider

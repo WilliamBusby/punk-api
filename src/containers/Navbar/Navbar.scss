@@ -38,23 +38,16 @@
     margin-bottom: 20px;
   }
 
-  &__change-search {
-    background-color: #F3F7F4;
-    border-radius: 2px;
-    padding: 5px;
-  }
-
   &__change-page {
     width: 20vw;
     margin-left: -3vw;
 
     &__selected {
-      color: red;
+      background-color: #6ab4cb;
+      border: none;
+      border-radius: 2px;
+      width: 8%;
     }
-  //   margin-top: 1vw;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   flex-direction: row;
   }
 
   ul {
@@ -62,5 +55,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
   }
 }
