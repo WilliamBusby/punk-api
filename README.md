@@ -50,7 +50,7 @@ If there are any issues with the website please contact me at williambusby1999@g
 
 Desktop view
 
-![Desktop View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_desktop.PNG)
+![Desktop View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_desktop_updated.PNG)
 
 Beerpage view
 
