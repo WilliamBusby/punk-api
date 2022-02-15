@@ -1,21 +1,16 @@
 
 import React from 'react';
 import Card from "../../components/Card/Card";
+import {Link} from "react-router-dom";
 import "./Cardlist.scss";
 
 const Cardlist = (props) => {
 
-  const {beers, usePh} = props;
+  const {beers} = props;
 
   const displayBeers = (listOfBeers) => {
-    const newBeerList = [...listOfBeers];
-    const filteredBeerList = (usePh) ? filterByPh(newBeerList) : newBeerList;
-    const displayBeerList = filteredBeerList.map((beer,index) => <Card beerInfo={beer} key={index} />);
+    const displayBeerList = listOfBeers.map((beer,index) => <Link to={`/${index+1}`} key={index} style={{ textDecoration: 'none' }} ><Card beerInfo={beer} /></Link>);
     return displayBeerList;
-  }
-
-  const filterByPh = (beerList) => {
-    return beerList.filter(beer => (beer.ph < 4 && beer.ph));
   }
 
   return (

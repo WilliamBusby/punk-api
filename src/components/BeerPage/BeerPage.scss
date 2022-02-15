@@ -1,0 +1,91 @@
+
+.beer-page {
+  margin: 0 auto;
+  width: 40%;
+  overflow: hidden;
+  color: #F3F7F4;
+  text-align: center;
+  text-decoration: none;
+  height: 100vh;
+
+  h1 {
+    font-size: 3vw;
+    color: #F3F7F4;
+  }
+
+  h2 {
+    font-size: 2vw;
+  }
+
+  ul {
+    font-size: 1vw;
+    margin: 0 auto;
+    padding-left: 0;
+    font-weight: bolder;
+    width: 80%;
+
+    li {
+      text-align: left;
+      font-size: 0.8vw;
+      margin-top: 10px;
+    }
+  }
+
+  &__punk {
+    color: #6ab4cb;
+  }
+
+  &__content {
+    display: grid;
+    font-size: 1vw;
+    font-weight: lighter;
+    grid-template-areas: 
+    "name tagline"
+    "beerImage abv"
+    "beerImage first-brewed"
+    "beerImage description"
+    "beerImage food-pairing"
+    "beerImage .";
+    font-weight: 300;
+    column-gap: 3vw;
+  }
+
+  &__name {
+    grid-area: name;
+  }
+
+  &__tagline {
+    grid-area: tagline;
+    margin: auto;
+  }
+
+  &__image {
+    grid-area: beerImage;
+    min-width: 300px;
+    margin: 0 auto;
+
+    img {
+      width: auto;
+      height: 65vh;
+    }
+  }
+
+  &__abv {
+    grid-area: abv;
+  }
+
+  &__first-brewed {
+    grid-area: first-brewed;
+  }
+
+  &__description {
+    grid-area: description;
+    font-size: 1vw;
+    width: 60%;
+    margin: 40px auto 35px;
+  }
+
+  &__food-pairing {
+    grid-area: food-pairing;
+  }
+}
