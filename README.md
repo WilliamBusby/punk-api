@@ -55,4 +55,4 @@ Desktop view
 
 Beerpage view
 
-![Beer page View] (https://github.com/WilliamBusby/punk-api/blob/main/public/README_beerpage.PNG)
+![Beer page View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_beerpage.PNG)
