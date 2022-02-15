@@ -40,8 +40,7 @@ Src:
 
 ## Current known issues
 
-- There is an issue with attempting to go back a page when on the first page showing no beers.
-- There is an issue with filtering only working in one direction.
+- No currently known issues.
 
 ## Contact me
 
