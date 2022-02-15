@@ -9,7 +9,7 @@ const Cardlist = (props) => {
   const {beers} = props;
 
   const displayBeers = (listOfBeers) => {
-    const displayBeerList = listOfBeers.map((beer,index) => <Link to={`/${index+1}`} key={index} style={{ textDecoration: 'none' }} ><Card beerInfo={beer} /></Link>);
+    const displayBeerList = listOfBeers.map((beer,index) => <Link to={`/${beer.id}`} key={index} style={{ textDecoration: 'none' }} ><Card beerInfo={beer} /></Link>);
     return displayBeerList;
   }
 
