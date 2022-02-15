@@ -45,6 +45,7 @@ Src:
 ## Credit and licensing
 
 Punk api: https://punkapi.com/
+
 Font used: Merriweather Sans by http://sorkintype.com/
 
 ## Contact me
