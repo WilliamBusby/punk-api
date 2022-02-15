@@ -42,6 +42,11 @@ Src:
 
 - No currently known issues.
 
+## Credit and licensing
+
+Punk api: https://punkapi.com/
+Font used: Merriweather Sans by http://sorkintype.com/
+
 ## Contact me
 
 If there are any issues with the website please contact me at williambusby1999@gmail.com. Please include the title of this respository in the subject.
