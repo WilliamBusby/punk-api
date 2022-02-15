@@ -78,9 +78,10 @@ const App = () => {
         <Routes>
           <Route 
           path="/"
-          element = {<><Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
-          <Main beers={displayedBeers}/></>}> 
+          element = {<> <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
+          <Main beers={displayedBeers} /> </>}> 
           </Route>
+          
           <Route 
           path="/:beerId"
           element= {<BeerPage beers={beers} />}>
