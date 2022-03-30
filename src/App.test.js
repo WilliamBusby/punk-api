@@ -1,8 +1,19 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from './App';
+import CardList from "./containers/Cardlist/Cardlist";
+import BeerPage from "./components/BeerPage/BeerPage";
+import Navbar from "./containers/Navbar/Navbar";
 
-test('renders learn react link', () => {
+test('Renders page header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const headingText = screen.getByText(/punk/i);
+
+  expect(headingText).toBeInTheDocument();
 });
+
+test('Renders nav properly', () => {
+  render(<App />);
+
+})

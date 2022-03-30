@@ -40,8 +40,13 @@ Src:
 
 ## Current known issues
 
-- There is an issue with attempting to go back a page when on the first page showing no beers.
-- There is an issue with filtering only working in one direction.
+- No currently known issues.
+
+## Credit and licensing
+
+Punk api: https://punkapi.com/
+
+Font used: Merriweather Sans by http://sorkintype.com/
 
 ## Contact me
 
@@ -51,4 +56,8 @@ If there are any issues with the website please contact me at williambusby1999@g
 
 Desktop view
 
-![Desktop View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_desktop.PNG)
+![Desktop View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_desktop_updated.PNG)
+
+Beerpage view
+
+![Beer page View](https://github.com/WilliamBusby/punk-api/blob/main/public/README_beerpage.PNG)

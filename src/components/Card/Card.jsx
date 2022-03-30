@@ -1,49 +1,27 @@
 
-import React, {useState} from 'react';
+import React from 'react';
 import "./Card.scss";
 
 const Card = (props) => {
 
-  const {beerInfo} = props;
+  const { beerInfo } = props;
+  const { name, abv, image_url, ph, first_brewed } = beerInfo;
 
-  const [isDescShowing, setIsDescShowing] = useState(false);
-
-  const beerName = beerInfo.name;
-  const beerAbv = beerInfo.abv;
   let beerTagline = beerInfo.tagline;
-  const beerImage = beerInfo.image_url;
-  let beerDesc = beerInfo.description;
-  const beerPh = beerInfo.ph;
-  const beerFirstBrew = beerInfo.first_brewed;
 
-  if(beerTagline.charAt(beerTagline.length-1) !== ".") {
-    beerTagline += "."
-  };
-
-  if(beerDesc.charAt(beerDesc.length-1) !== ".") {
-    beerDesc += "."
-  };
-
-  const handleIsDescShowing = () => {
-    setIsDescShowing(!isDescShowing);
-  }
+  if(beerTagline.charAt(beerTagline.length-1) !== ".") beerTagline += ".";
 
   return (
     <div className="full-card">
-      { !isDescShowing &&  <div className="card" onClick={handleIsDescShowing}>
-        <h3 className="card__name">{beerName}</h3>
-        <h4 className="card__abv">{beerAbv} ABV</h4>
-        <img src={beerImage} alt="" className="card__image"/>
+      <div className="card">
+        <h3 className="card__name">{name}</h3>
+        <h4 className="card__abv">{abv} ABV</h4>
+        <img src={image_url} alt="" className="card__image"/>
         <p className="card__tag-line">{beerTagline}</p>
-        <p className="card__ph">{beerPh} pH</p>
-        <p className="card__first-brewed">{beerFirstBrew}</p>
-      </div>}
-      {isDescShowing && <div className="card card-desc" onClick={handleIsDescShowing}>
-        <h3 className="card__name">{beerName}</h3>
-        <p className="card-desc__text">{beerDesc}</p>
-      </div>}
+        <p className="card__ph">{ph} pH</p>
+        <p className="card__first-brewed">{first_brewed}</p>
+      </div>
     </div>
-
   )
 }
 
