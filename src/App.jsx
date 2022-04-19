@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import './App.scss';
 import Navbar from "./containers/Navbar/Navbar";
 import Main from "./containers/Main/Main";
@@ -80,6 +80,10 @@ const App = () => {
           path="/"
           element = {<> <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
           <Main beers={displayedBeers} /> </>}> 
+          </Route>
+          <Route 
+          path="/punk-api"
+          element = {<Navigate to="/" replace />}> 
           </Route>
           
           <Route 

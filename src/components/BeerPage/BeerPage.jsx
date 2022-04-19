@@ -35,6 +35,8 @@ const BeerPage = (props) => {
   const foodPairings = food_pairing.map((pairing, index) => <li key={index}>{pairing}</li>);
 
   return (
+    <>
+    {(beers !== []) && (
     <div className="beer-page">
       <Link to="/" style={{textDecoration: "none"}}><h1><span className="beer-page__punk">PUNK</span> API</h1></Link>
       <div className="beer-page__content">
@@ -49,6 +51,8 @@ const BeerPage = (props) => {
         </div>
       </div>
     </div>
+    )}
+    </>
   )
 }
 
