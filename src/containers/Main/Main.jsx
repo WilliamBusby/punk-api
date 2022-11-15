@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Cardlist from "./../Cardlist/Cardlist";
 import "./Main.scss"

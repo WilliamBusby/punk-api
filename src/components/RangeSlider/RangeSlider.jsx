@@ -7,7 +7,7 @@ const RangeSlider = (props) => {
   return (
     <div className="nav__range">
       <label htmlFor={name}>{label} {value}</label>
-      <input type="range" min={min} max={max} step={step} name={name} value={value} onInput={changeSearchParams} id={name}/>
+      <input type="range" min={min} max={max} step={step} name={name} value={value} onChange={changeSearchParams} id={name}/>
     </div>
   )
 }

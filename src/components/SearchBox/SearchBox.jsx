@@ -6,7 +6,7 @@ const SearchBox = (props) => {
   const {changeSearchParams} = props;
   return (
     <div className="search-box">
-      <input id="search-box" type="text" onInput={changeSearchParams}/>
+      <input id="search-box" type="text" onInput={changeSearchParams} placeholder="Search..."/>
     </div>
   )
 }
