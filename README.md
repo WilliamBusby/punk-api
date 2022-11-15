@@ -35,8 +35,8 @@ Src:
 - App.jsx for the main logic.
 - App.scss for the styling of the app.
 - Assets folder containing images used for README and website.
-- Components folder with each component folder, each containing a respective jsx and scss file.
-- Containers folder with each container folder, each containing a respective jsx and scss file.
+- Components folder with each component folder, each containing a respective jsx, scss, and test.js files.
+- Containers folder with each container folder, each containing a respective jsx, scss, and test.js file.
 
 ## Current known issues
 
