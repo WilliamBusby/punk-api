@@ -7,6 +7,7 @@ import BeerPage from './components/BeerPage/BeerPage';
 
 const App = () => {
 
+  // Initial search params
   const initialSearchParams = {
     beer_name: "",
     abv_gt: 0,
@@ -14,13 +15,15 @@ const App = () => {
     usePh: false
   }
 
-  const [beers, setBeers] = useState([]);
-  const [filteredBeerList, setFilteredBeerList] = useState([]);
-  const [displayedBeers, setDisplayedBeers] = useState([]);
-  const [searchParams, setSearchParams] = useState(initialSearchParams);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageStart, setPageStart] = useState(0);
+  // States
+  const [beers, setBeers] = useState([]); // Full list
+  const [filteredBeerList, setFilteredBeerList] = useState([]); // List based on filters
+  const [displayedBeers, setDisplayedBeers] = useState([]); // Currently shown beers
+  const [searchParams, setSearchParams] = useState(initialSearchParams); // Current search params
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [pageStart, setPageStart] = useState(0); // Current beer number to start
   
+  // Gets full beer list
   const getBeersList = async () => {
     const beerList = [];
     for(let i = 1; i<6; i++) {
@@ -33,20 +36,24 @@ const App = () => {
     setFilteredBeerList(flattenedArr);
   };
 
+  // Calls getBeersList once on load
   useEffect(() => {
     getBeersList();
   },[]);
 
+  // Updates displayed beers list anytime page or filtered list changes
   useEffect(() => {
     setDisplayedBeers(filteredBeerList.slice(pageStart, pageStart + 30));
     setCurrentPage(Math.ceil(filteredBeerList.length / 30));
   },[currentPage, pageStart, filteredBeerList]);
 
+  // Handles changing page
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 18) % filteredBeerList.length;
     setPageStart(newOffset);
   }
 
+  // Updates search params
   const changeSearchParams = (event) => {
     const startingParams = searchParams;
     if(event.target.id === "search-box") {
@@ -64,6 +71,7 @@ const App = () => {
     filterBeers();
   }
 
+  // Filters beers from current state values
   const filterBeers = () => {
     const textFiltered = beers.filter(beer => beer.name.toLowerCase().includes(searchParams.beer_name));
     const abvFilteredBeers = textFiltered.filter(beer => beer.abv > searchParams.abv_gt);
@@ -81,6 +89,7 @@ const App = () => {
           element = {<> <Navbar changeSearchParams={changeSearchParams} currentSearchParams={searchParams} handlePageClick={handlePageClick} currentPage={currentPage} />
           <Main beers={displayedBeers} /> </>}> 
           </Route>
+          
           <Route 
           path="/punk-api"
           element = {<Navigate to="/" replace />}> 

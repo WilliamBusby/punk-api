@@ -6,17 +6,28 @@ const BeerPage = (props) => {
   const {beers} = props;
   const {beerId} = useParams();
 
-  const beerInfo = beers.filter(beer => beer.id == beerId);
+  // Get beer from beer id
+  const beerInfo = beers.filter(beer => String(beer.id) === String(beerId));
+
+  // Returns 404 if beer not found
+  if(beerInfo.length === 0 ) {return (
+  <div className="beer-page">
+    <Link to="/" style={{textDecoration: "none"}}><h1><span className="beer-page__punk">PUNK</span> API</h1></Link>
+    <div className="beer-page__center">404 Beer Not Found</div>
+  </div>)}
+
   const {name, first_brewed, image_url, abv, food_pairing} = beerInfo[0];
 
   let tagline = beerInfo[0].tagline;
   let description = beerInfo[0].description;
 
+  // Adds full stop to tagline.
   if(tagline.charAt(tagline.length-1) !== ".") tagline += ".";
 
+  // Maxes the number of sentences that a description can have.
   const setMaxCharacters = (text, maxNumber) => {
-    const sentencesArr = text.split(".").map(sentence => sentence + ".");
-    sentencesArr.pop();
+    if(text.indexOf(".") === -1) {return text + "."}
+    const sentencesArr = text.split(".").filter(sentence => sentence).map(sentence => sentence + ".");
     const characterLengthEachSentence = sentencesArr.map(sentence => sentence.length);
   
     let totalCharacterLength = 0;
@@ -47,7 +58,7 @@ const BeerPage = (props) => {
         <h3 className="beer-page__description">"{description}"</h3>
         <ul className="beer-page__food-pairing">Recommended food pairings: {foodPairings}</ul>
         <div className="beer-page__image">
-          <img src={image_url} alt={name}/>
+          <img src={image_url} alt={"Image of " + name}/>
         </div>
       </div>
     </div>

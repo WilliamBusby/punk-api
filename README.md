@@ -50,7 +50,7 @@ Font used: Merriweather Sans by http://sorkintype.com/
 
 ## Contact me
 
-If there are any issues with the website please contact me at williambusby1999@gmail.com. Please include the title of this respository in the subject.
+If there are any issues with the website please contact me at williambusby1999@gmail.com. Please include the title of this repository in the subject.
 
 ## Screenshots
 
