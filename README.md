@@ -20,7 +20,7 @@ There are several input options to filter beers by:
 - ABV.
 - Brewed before date.
 - pH.
-- Different pages with 25 results on each page.
+- Different pages with 30 results on each page.
 
 ## Files
 
